@@ -1,0 +1,141 @@
+/* 布局相关样式 */
+.game-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: white;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    max-width: 100%;
+    margin: 0 auto;
+    width: 100%;
+  }
+  
+  /* 状态栏样式 */
+  .status-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 10px;
+    background-color: #fff;
+    border-radius: 8px;
+    margin-bottom: 20px;
+  }
+  
+  .current-player {
+    font-size: 18px;
+    font-weight: bold;
+  }
+  
+  .dice-display {
+    font-size: 24px;
+    font-weight: bold;
+  }
+  
+  .dice {
+    width: 100%;
+    height: 100%;
+    transition: transform 0.2s ease;
+  }
+  
+  /* GO 按钮样式 */
+  .go-button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 18px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .go-button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+  
+  /* 弹窗和对话框样式 */
+  .dialog-overlay,
+  .name-dialog-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+  }
+  
+  .dialog-content,
+  .name-dialog-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    max-width: 300px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  }
+  
+  .name-dialog-content {
+    width: 300px;
+  }
+  
+  .name-dialog-content h3 {
+    margin-bottom: 10px;
+  }
+  
+  .name-dialog-content label {
+    display: block;
+    margin: 10px 0 5px;
+  }
+  
+  .name-dialog-content input {
+    width: 100%;
+    padding: 5px;
+    margin-bottom: 10px;
+  }
+  
+  .name-dialog-content button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+  
+  /* 骰子动画 */
+  @keyframes roll {
+    0% {
+      transform: rotate(0deg);
+    }
+    25% {
+      transform: rotate(90deg);
+    }
+    50% {
+      transform: rotate(180deg);
+    }
+    75% {
+      transform: rotate(270deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  
+  .dice-rolling {
+    animation: roll 0.5s infinite linear;
+    font-size: 24px;
+    color: #888;
+  }
+  
+  .dice-number {
+    font-size: 48px;
+    font-weight: bold;
+  }
