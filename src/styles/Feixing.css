@@ -1,4 +1,15 @@
 /* 全局布局 */
+/* 示例全局样式 */
+body {
+  font-family: 'LXGW WenKai', 'Source Han Serif', 'Arial', sans-serif;}
+
+/* 针对标题 */
+h1, h2, h3 {
+  font-family: 'LXGW WenKai', 'Source Han Serif', 'Arial', sans-serif;}
+
+/* 针对按钮 */
+button {
+  font-family: 'LXGW WenKai', 'Source Han Serif', 'Arial', sans-serif;}
 /* 游戏容器 */
 .game-container {
   display: flex;
@@ -11,6 +22,8 @@
   width: 100%;
   max-width: 600px;
   margin: 0 auto;
+  position: relative;
+  padding-top: 20px;
 }
 
 /* 棋盘 */
@@ -551,4 +564,32 @@
   border: 1px solid #f8c8dc; /* 浅粉色边框 */
   transition: opacity 0.3s ease, transform 0.2s ease;
   opacity: 0.95; /* 设置透明度为柔和效果 */
+}
+
+/* 包裹返回按钮和状态栏的容器 */
+.status-wrapper {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px; /* 状态栏和棋盘之间的间距 */
+}
+
+/* 返回按钮样式 */
+.back-button {
+  display: inline-block;
+  margin-right: 10px; /* 与状态栏的间距 */
+  background-color: linear-gradient(135deg, #ffccd5, #e6b3ff); /* 与状态栏背景一致 */
+  color: #333; /* 文本颜色 */
+  text-decoration: none;
+  padding: 8px 16px;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* 柔和阴影 */
+  border: 1px solid #ddd; /* 统一边框样式 */
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.back-button:hover {
+  background-color: #fff; /* 浅色悬停效果 */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15); /* 悬停时增强阴影 */
 }

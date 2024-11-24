@@ -1,0 +1,120 @@
+/* 全局布局 */
+/* 示例全局样式 */
+body {
+    font-family: 'LXGW WenKai', 'Source Han Serif', 'Arial', sans-serif;  }
+  
+/* 针对标题 */
+h1, h2, h3, p {
+    font-family: 'LXGW WenKai', 'Source Han Serif', 'Arial', sans-serif;}
+
+/* 针对按钮 */
+button {
+    font-family: 'LXGW WenKai', 'Source Han Serif', 'Arial', sans-serif;}
+
+
+/* 页面容器 */
+.home-container {
+    font-family: 'Comic Sans MS', 'Arial', sans-serif;
+    background-color: #f8e6f1;
+    padding: 20px;
+    color: #5d005d;
+    text-align: center;
+  }
+  
+  /* 标题部分 */
+  .home-header {
+    margin-bottom: 30px;
+  }
+  
+  .home-title {
+    font-size: 3rem;
+    font-weight: bold;
+    color: #ff77a9;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  }
+  
+  .home-subtitle {
+    font-size: 1.5rem;
+    color: #f0618c;
+  }
+  
+  /* 介绍部分 */
+  .home-intro {
+    margin: 20px auto;
+    font-size: 1.2rem;
+    line-height: 1.8;
+    max-width: 600px;
+    background: rgba(255, 200, 221, 0.4);
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* 游戏列表部分 */
+  .game-list {
+    margin-top: 30px;
+  }
+  
+  .game-list-title {
+    font-size: 2rem;
+    color: #e63973;
+    margin-bottom: 20px;
+  }
+  
+  /* 游戏卡片 */
+  .game-cards {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 0;
+    list-style: none;
+  }
+  
+  .game-card {
+    background: #ffe6f2;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    padding: 15px;
+    max-width: 300px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .game-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+  }
+  
+  .game-thumbnail img {
+    width: 100%;
+    border-radius: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .game-info h3 {
+    font-size: 1.5rem;
+    color: #ff4d88;
+  }
+  
+  .game-info p {
+    font-size: 1rem;
+    color: #993366;
+    margin: 10px 0;
+  }
+  
+  /* 游戏按钮 */
+  .game-button {
+    background: #ff4d88;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+  }
+  
+  .game-button:hover {
+    background: #e63973;
+  }

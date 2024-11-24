@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import '../styles/Board.css';
+import '../styles/Feixing.css';
 import boardConfig from '../content/feixing.json';
+import { Link } from 'react-router-dom';
 
 const Board = () => {
   const size = 13;
@@ -312,16 +313,23 @@ const Board = () => {
       )}
 
       {/* 状态栏 */}
-      <div className="status-bar">
-        <div className="current-player">
-          <strong>Current Player:</strong> {positions[currentPlayer].name} ({currentPlayer})
+      <div className="status-wrapper">
+
+        <div className="back-button">
+          <Link to="/" className="back-link">←主页</Link>
         </div>
-        <div className="dice-container">
-          <img src={diceImage} alt="Dice" className="dice" />
+        <div className="status-bar">
+
+          <div className="current-player">
+            <strong>Current Player:</strong> {positions[currentPlayer].name} ({currentPlayer})
+          </div>
+          <div className="dice-container">
+            <img src={diceImage} alt="Dice" className="dice" />
+          </div>
+          <button className="go-button" onClick={rollDice} disabled={isMoving || positions[currentPlayer].hasFinished || isRolling}>
+            GO
+          </button>
         </div>
-        <button className="go-button" onClick={rollDice} disabled={isMoving || positions[currentPlayer].hasFinished || isRolling}>
-          GO
-        </button>
       </div>
       
       {/* 普通格子的对话框 */}
