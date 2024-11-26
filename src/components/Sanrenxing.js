@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import '../styles/Feixing.css';
-import boardConfig from '../content/feixing.json';
+import '../styles/Sanrenxing.css';
+import boardConfig from '../content/sanrenxing.json';
 import { Link } from 'react-router-dom';
 
 const Board = () => {
@@ -16,10 +16,9 @@ const Board = () => {
   ]
   // 玩家初始位置和默认名称
   const initialPlayers = {
-    A: { position: 39, name: '', hasFinished: false },
-    B: { position: 9, name: '', hasFinished: false },
-    C: { position: 129, name: '', hasFinished: false },
-    D: { position: 159, name: '', hasFinished: false }
+    A: { position: 19, name: '', hasFinished: false },
+    B: { position: 5, name: '', hasFinished: false },
+    C: { position: 7, name: '', hasFinished: false },
   };
 
   const [positions, setPositions] = useState(initialPlayers); // 每个玩家的位置、名字和终点状态
@@ -35,7 +34,6 @@ const Board = () => {
   // 新增状态控制跳过对话框
   const [isSkipDialogVisible, setIsSkipDialogVisible] = useState(false);
   const [skipTarget, setSkipTarget] = useState(null);
-  // 提示框状态
   const [tooltip, setTooltip] = useState({ visible: false, content: '', x: 0, y: 0 }); // 提示框状态
   // 显示跳过对话框
   const showSkipDialog = (position, alternateNext) => {
@@ -68,7 +66,6 @@ const Board = () => {
     A: '',
     B: '',
     C: '',
-    D: ''
   });
 
   // 处理玩家名称输入
@@ -242,7 +239,7 @@ const Board = () => {
   };
 
   const getNextPlayer = (player) => {
-    return player === 'A' ? 'B' : player === 'B' ? 'C' : player === 'C' ? 'D' : 'A';
+    return player === 'A' ? 'B' : player === 'B' ? 'C' : 'A';
   };
 
   const showDialog = (position) => {
@@ -284,16 +281,28 @@ const Board = () => {
   const handleMouseOut = () => {
     setTooltip({ visible: false, content: '', x: 0, y: 0 });
   };
+  // 根据当前索引和目标索引计算箭头方向
+  const getArrowDirection = (currentIndex, nextIndex) => {
+    const currentRow = Math.floor(currentIndex / size);
+    const currentCol = currentIndex % size;
+    const nextRow = Math.floor(nextIndex / size);
+    const nextCol = nextIndex % size;
 
+    if (nextRow < currentRow) return 'up';
+    if (nextRow > currentRow) return 'down';
+    if (nextCol < currentCol) return 'left';
+    if (nextCol > currentCol) return 'right';
+    return 'none'; // 默认无方向
+  };
   return (
     <div className="game-container">
       {/* 玩家名称输入对话框 */}
       {isNameDialogVisible && (
         <div className="name-dialog-overlay">
           <div className="name-dialog-content">
-            <h3>欢迎来到情趣飞行棋</h3>
-            <p>本游戏为两对男女共同游玩</p>
-            <p><b>玩家AC为女性玩家，玩家BD为男性玩家</b></p>
+            <h3>三人行</h3>
+            <p>本游2男一女进行</p>
+            <p><b>玩家A为女性玩家，玩家BD为男性玩家</b></p>
             <p>详细规则可参考棋盘下的说明</p>
             {Object.keys(playerNames).map((player) => (
               <div key={player}>
@@ -388,21 +397,23 @@ const Board = () => {
                 </span>
               ) : null
             )}
+          {/* 箭头指示器 */}
+          {boardConfig[index]?.next !== undefined && (
+            <div className={`arrow arrow-${getArrowDirection(index, boardConfig[index].next)}`}></div>
+          )}
           </div>
         ))}
       </div>
 
       {/* 说明栏目 */}
       <div className="game-intro">
-        <h2>多人运动飞行棋 激情脱衣版</h2>
-        <h3>2男2女（2对）</h3>
-        <p>1. 本飞行棋含有一些大尺度内容，若有不能完成的项目可自行变换或用喝酒代替。</p>
+        <h2>三人行</h2>
+        <h3>2男1女</h3>
+        <p>1. 本游戏含有一些大尺度内容，若有不能完成的项目可自行变换或用喝酒代替。</p>
         <p>2.准备好酒水，套套若干。整洁干净自身，逮议啤酒或鸡尾酒，杯子大小自己选择，建议适量饮酒，娱乐为主,不要耽误后面的主要活动。</p>
-        <p>3.棋盘中的很多游戏都取决于你当前身上衣服的数量，所以开始游戏前最多可以穿四件衣服，袜子不算，不可以随便增减衣服，开始游戏前请调好室内温度。</p>
-        <p>4.游戏中会用到跳蛋，假JJ等道具，眼罩乳夹，情趣内衣等道具，这边推荐北美用户可以在<a href="https://www.themeowish.com" target="_blank" rel="noreferrer">北美情趣第一站喵喵愿望屋</a>购买</p>
-        <p>5.当属于一队的男女都到达终点游戏结束，获胜方可对对方提出任意要求！</p>
-        <p>6.当棋子正好位于与棋子颜色相同的格子的时候的点的时候即可完成相应的任务飞行，飞行任务大多为尺度比较大的项目，不能完成任务则留在原地。</p>
-        <p>7.当棋子进入最终冲刺阶段后（前往终点之前带颜色的格子），玩家必须骰出刚好到达终点的点数才算游戏胜利。不然要倒退回多余的点数并完成格子上的任务。</p>
+        <p>3.游戏中会用到跳蛋，假JJ等道具，眼罩乳夹，情趣内衣等道具，这边推荐北美用户可以在<a href="https://www.themeowish.com" target="_blank" rel="noreferrer">北美情趣第一站喵喵愿望屋</a>购买</p>
+        <p>4.当棋子进入最终冲刺阶段后（前往终点之前带颜色的格子），玩家必须骰出刚好到达终点的点数才算游戏胜利。不然要倒退回多余的点数并完成格子上的任务。</p>
+        <p>5.玩家可以提出提前终止游戏，但是提出的玩家要受到任意惩罚哦！</p>
       </div>
     </div>
   );

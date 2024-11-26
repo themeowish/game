@@ -3,11 +3,7 @@ import { useNavigate } from 'react-router-dom'; // 使用 React Router 的导航
 import '../styles/Home.css';
 
 const HomePage = () => {
-  const navigate = useNavigate(); // 初始化导航函数
-
-  const handleGameStart = () => {
-    navigate('/flying-chess'); // 假设飞行棋的路由是 `/flying-chess`
-  };
+  const navigate = useNavigate(); // 初始化导航
 
   return (
     <div className="home-container">
@@ -33,7 +29,7 @@ const HomePage = () => {
         <ul className="game-cards">
           <li className="game-card">
             <div className="game-thumbnail">
-              <h3>脱衣飞行棋</h3>
+              <h3>激情脱衣</h3>
             </div>
             <div className="game-info">
               <h3>飞行棋</h3>
@@ -42,13 +38,29 @@ const HomePage = () => {
               <p>尺度：交换，插入，口交</p>
               <button
                 className="game-button"
-                onClick={handleGameStart} // 调用导航函数
+                onClick={() => navigate('/flying-chess')} 
               >
                 进入游戏
               </button>
             </div>
           </li>
-          {/* 如果未来有更多游戏，可以添加更多游戏卡片 */}
+          <li className="game-card">
+            <div className="game-thumbnail">
+              <h3>三人成行</h3>
+            </div>
+            <div className="game-info">
+              <h3>三人热场游戏</h3>
+              <p>参与人数：3</p>
+              <p>1女2男）</p>
+              <p>尺度：插入，口交</p>
+              <button
+                className="game-button"
+                onClick={() => navigate('/sanrenxing')} 
+              >
+                进入游戏
+              </button>
+            </div>
+          </li>
         </ul>
       </section>
     </div>
