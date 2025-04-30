@@ -24,7 +24,7 @@ const Board = () => {
 
   const [positions, setPositions] = useState(initialPlayers); // 每个玩家的位置、名字和终点状态
   const [currentPlayer, setCurrentPlayer] = useState('A'); // 当前玩家
-  const [setDice] = useState(0); // 骰子的点数
+  const [dice, setDice] = useState(0); // 骰子的点数
   const [diceImage, setDiceImage] = useState(diceImages[0]); // 当前显示的骰子图片
   const [isMoving, setIsMoving] = useState(false); // 控制棋子是否在移动中
   const [isRolling, setIsRolling] = useState(false); // 控制骰子的动画
@@ -292,20 +292,23 @@ const Board = () => {
         <div className="name-dialog-overlay">
           <div className="name-dialog-content">
             <h3>欢迎来到情趣飞行棋</h3>
+            <p>准备好开始一场刺激的冒险了吗？</p>
             <p>本游戏为两对男女共同游玩</p>
-            <p><b>玩家AC为女性玩家，玩家BD为男性玩家</b></p>
+            <p><b>玩家 A/C 为女性玩家</b></p>
+            <p><b>玩家 B/D 为男性玩家</b></p>
             <p>详细规则可参考棋盘下的说明</p>
             {Object.keys(playerNames).map((player) => (
               <div key={player}>
-                <label>{`玩家 ${player} :`}</label>
+                <label>{`玩家 ${player}`}</label>
                 <input
                   type="text"
+                  placeholder={`请输入玩家 ${player} 的名字`}
                   value={playerNames[player]}
                   onChange={(e) => handleNameChange(player, e.target.value)}
                 />
               </div>
             ))}
-            <button onClick={startGame}>Start Game</button>
+            <button onClick={startGame}>开始游戏</button>
           </div>
         </div>
       )}

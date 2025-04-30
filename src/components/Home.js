@@ -51,7 +51,7 @@ const HomePage = () => {
             <div className="game-info">
               <h3>三人热场游戏</h3>
               <p>参与人数：3</p>
-              <p>1女2男）</p>
+              <p>1女2男</p>
               <p>尺度：插入，口交</p>
               <button
                 className="game-button"
