@@ -35,11 +35,30 @@ const Board = () => {
   const [isSkipDialogVisible, setIsSkipDialogVisible] = useState(false);
   const [skipTarget, setSkipTarget] = useState(null);
   const [tooltip, setTooltip] = useState({ visible: false, content: '', x: 0, y: 0 }); // 提示框状态
+  
+  // 替换文本中的玩家标识为实际名字
+  const replacePlayerNames = (text) => {
+    if (!text) return text;
+    let result = text;
+    // 替换玩家A、玩家B、玩家C（三人行只有三个玩家）
+    ['A', 'B', 'C'].forEach((player) => {
+      const playerName = positions[player]?.name || `玩家${player}`;
+      // 替换各种可能的格式：玩家A、玩家 A、A玩家、A 玩家等
+      result = result.replace(new RegExp(`玩家${player}`, 'g'), playerName);
+      result = result.replace(new RegExp(`玩家 ${player}`, 'g'), playerName);
+      result = result.replace(new RegExp(`${player}玩家`, 'g'), playerName);
+      result = result.replace(new RegExp(`${player} 玩家`, 'g'), playerName);
+      result = result.replace(new RegExp(`Player ${player}`, 'gi'), playerName);
+    });
+    return result;
+  };
+  
   // 显示跳过对话框
   const showSkipDialog = (position, alternateNext) => {
     const squareInfo = boardConfig[position];
     if (squareInfo) {
-      setDialogContent(squareInfo.skip || 'No additional information');
+      const content = squareInfo.skip || 'No additional information';
+      setDialogContent(replacePlayerNames(content));
     }
     setIsSkipDialogVisible(true);
     setSkipTarget(alternateNext);
@@ -154,8 +173,8 @@ const Board = () => {
               switchPlayer();
               showDialog(newPosition); // 运行结束后显示对话框
             }
-          }, 500);
-        }, 500);
+          }, 250);
+        }, 250);
         clearInterval(interval);
   
       } else if (steps > 0) {
@@ -189,7 +208,7 @@ const Board = () => {
         checkIfPlayerFinished(newPosition);
         showDialog(newPosition); // 运行结束后显示对话框
       }
-    }, 500);
+    }, 250);
   };
   
 
@@ -245,7 +264,8 @@ const Board = () => {
   const showDialog = (position) => {
     const squareInfo = boardConfig[position];
     if (squareInfo) {
-      setDialogContent(squareInfo.description || 'No additional information');
+      const content = squareInfo.description || 'No additional information';
+      setDialogContent(replacePlayerNames(content));
       setIsDialogVisible(true);
     }
   };
@@ -258,7 +278,7 @@ const Board = () => {
   const handleSquareClick = (index) => {
     const squareInfo = boardConfig[index]?.description;
     if (squareInfo) {
-      setDialogContent(squareInfo);
+      setDialogContent(replacePlayerNames(squareInfo));
       setIsDialogVisible(true);
     }
   };
@@ -270,7 +290,7 @@ const Board = () => {
     if (squareInfo) {
       setTooltip({
         visible: true,
-        content: squareInfo,
+        content: replacePlayerNames(squareInfo),
         x: e.clientX,
         y: e.clientY,
       });
