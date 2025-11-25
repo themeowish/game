@@ -266,6 +266,51 @@ button {
   transform: translateY(0);
 }
 
+/* 作者信息 */
+.home-footer {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  padding: 1.5rem 2rem;
+  border-radius: 20px;
+  margin-top: 3rem;
+  text-align: center;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  animation: fadeInUp 0.6s ease-out 0.6s both;
+}
+
+.home-footer p {
+  margin: 0;
+  font-size: 1.1rem;
+  color: #555;
+  font-weight: 500;
+}
+
+/* X logo 样式 */
+.x-logo {
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 0.3rem;
+}
+
+.home-footer-link {
+  color: #000;
+  text-decoration: none;
+  font-weight: 700;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.2rem 0.5rem;
+  border-radius: 6px;
+}
+
+.home-footer-link:hover {
+  color: #1da1f2;
+  background: rgba(29, 161, 242, 0.1);
+  transform: translateY(-2px);
+}
+
 @media (max-width: 768px) {
   .home-container {
     padding: 1rem;
@@ -310,6 +355,15 @@ button {
   
   .game-info h3 {
     font-size: 1.5rem;
+  }
+
+  .home-footer {
+    padding: 1rem 1.5rem;
+    margin-top: 2rem;
+  }
+
+  .home-footer p {
+    font-size: 1rem;
   }
 }
 
@@ -367,5 +421,14 @@ button {
   .game-button {
     padding: 1rem;
     font-size: 1rem;
+  }
+
+  .home-footer {
+    padding: 0.8rem 1rem;
+    margin-top: 1.5rem;
+  }
+
+  .home-footer p {
+    font-size: 0.95rem;
   }
 }

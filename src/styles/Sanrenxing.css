@@ -601,6 +601,28 @@ button {
   color: #ff69b4;
 }
 
+/* X logo 样式 */
+.x-logo {
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 0.2rem;
+}
+
+.game-intro-link {
+  color: #000;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.2rem;
+}
+
+.game-intro-link:hover {
+  color: #1da1f2;
+  text-decoration: none;
+}
+
 /* 提示框的样式 */
 .tooltip {
   position: absolute;
